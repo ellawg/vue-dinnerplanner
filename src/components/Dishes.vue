@@ -1,5 +1,5 @@
 <template>
-  <div class="Dishes">
+  <div class="dishes">
     <h3>Dishes</h3>
     <ul>
       <em v-if='status === "LOADING"'>Loading...</em>
@@ -38,3 +38,9 @@
     }
   }
 </script>
+<style>
+.dishes{
+  flex-grow: 3;
+}
+
+</style>

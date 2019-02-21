@@ -51,3 +51,9 @@ export default {
   }
 };
 </script>
+<style>
+.sidebar{
+  flex-grow: 1;
+}
+
+</style>
