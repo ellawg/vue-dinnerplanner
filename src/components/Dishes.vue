@@ -1,13 +1,11 @@
 <template>
   <div class="dishes">
     <h3>Dishes</h3>
-    <ul>
+    <div class="columns">
       <em v-if='status === "LOADING"'>Loading...</em>
       <b v-else-if='status === "ERROR"'>Failed to load data, please try again</b>
-      <li v-for="dish in dishes" :id="dish.id" :key="dish.id">
-        {{ dish.title }}
-      </li>
-    </ul>
+      <dishitem v-for="dish in dishes" :id="dish.id" :key="dish.id" v-bind:dish="dish"> </dishitem>
+    </div>
   </div>
 </template>
 
@@ -15,8 +13,12 @@
   // Alternative to passing the moderl as the component property,
   // we can import the model instance directly
   import modelInstance from "../data/DinnerModel";
+  import DishItem from "@/components/DishItem";
 
-  export default {
+  export default {  
+    components: {
+      dishitem: DishItem
+    },
     // this methods is called by Vue lifecycle when the
     // component is actually shown to the user (mounted to DOM)
     // that's a good place to call the API and get the data
@@ -41,6 +43,19 @@
 <style>
 .dishes{
   flex-grow: 3;
+  flex-wrap: wrap;
+}
+.item{
+    min-width: 190px;
+    max-width: 190px;
+    height: 230px;
+    margin: 20px;
+    text-align: center;
+}
+
+.item img{
+    width: 100%;
+    height: 70%;
 }
 
 </style>
