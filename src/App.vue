@@ -25,6 +25,7 @@ export default {
 .columns {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 </style>
