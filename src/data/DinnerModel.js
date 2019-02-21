@@ -1,8 +1,9 @@
 import ObservableModel from "./ObservableModel";
+import apiKey from "./apikey.js";
 
-const BASE_URL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+const BASE_URL = "http://sunset.nada.kth.se:8080/iprog/group/35";
 const httpOptions = {
-  headers: { "X-Mashape-Key": "YOUR_API_KEY" }
+  headers: { "X-Mashape-Key": apiKey }
 };
 
 class DinnerModel extends ObservableModel {
