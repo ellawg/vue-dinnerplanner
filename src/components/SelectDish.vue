@@ -44,10 +44,16 @@ export default {
 };
 </script>
 <style>
+.select-dish{
+  padding: 0 0 0 2%;
+}
+
+
 .search-dishes {
   display: flex;
   flex-grow: 3;
   flex-direction: column;
+  padding: 2% 0 0 0;
 }
 .search-bar {
   display:flex;

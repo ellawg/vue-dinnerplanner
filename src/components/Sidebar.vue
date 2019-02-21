@@ -54,6 +54,8 @@ export default {
 <style>
 .sidebar{
   flex-grow: 1;
+  min-width: 20vw;
+  padding: 0 2% 0 2%;
 }
 
 </style>

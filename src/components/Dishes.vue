@@ -1,5 +1,5 @@
 <template>
-  <div class="dishes">
+  <div class="dish-container">
     <h3>Dishes</h3>
     <div class="columns">
       <em v-if='status === "LOADING"'>Loading...</em>
@@ -41,10 +41,6 @@
   }
 </script>
 <style>
-.dishes{
-  flex-grow: 3;
-  flex-wrap: wrap;
-}
 .item{
     min-width: 190px;
     max-width: 190px;
@@ -56,6 +52,10 @@
 .item img{
     width: 100%;
     height: 70%;
+}
+
+.dish-container{
+  max-width: 70vw;
 }
 
 </style>
