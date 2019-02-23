@@ -12,6 +12,13 @@
       <br>
       Total number of guests: {{ numberOfGuests }}
     </p>
+    <table>
+      <tr>
+        <th>Dish Name</th>
+        <th>Cost</th>
+      </tr>
+    </table>
+    <button>Confirm Dinner</button>
     <p>Menu:</p>
     <p v-for="dish in menu" :id="dish.id" :key="dish.id">{{dish.title}}</p>
   </div>
@@ -55,10 +62,9 @@ export default {
 };
 </script>
 <style>
-.sidebar{
+.sidebar {
   flex-grow: 1;
   min-width: 20vw;
   padding: 0 2% 0 2%;
 }
-
 </style>

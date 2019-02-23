@@ -6,12 +6,16 @@ const httpOptions = {
   headers: { "X-Mashape-Key": apiKey }
 };
 
+
 class DinnerModel extends ObservableModel {
   constructor() {
     super();
     this._numberOfGuests = 4;
     this.getNumberOfGuests();
-    this._menu = [];
+    this.menu = [];
+    this.type = "all";
+    this.filter = "";
+    
     this.getFullMenu();
   }
 
@@ -27,27 +31,15 @@ class DinnerModel extends ObservableModel {
    * Set number of guests
    * @param {number} num
    */
+  
   setNumberOfGuests(num) {
     this._numberOfGuests = num;
     this.notifyObservers();
   }
-
-  /**
-   * Get the menu
-   * @returns {array}
-   */
-   getFullMenu(){
-     return this._menu;
-   }
-
-   /**
-   * Add dish to menu
-   * @param {object} dish
-   */
-  addDishToMenu(dish){
-    this._menu.push(dish)
-    this.notifyObservers();
-  }
+  setDishId(id) {
+		this.dishId = id;
+		this.notifyObservers('dishDetailsId');
+	}
 
   // API methods
 
@@ -58,6 +50,17 @@ class DinnerModel extends ObservableModel {
   getAllDishes() {
     const url = `${BASE_URL}/recipes/search`;
     return fetch(url, httpOptions).then(this.processResponse);
+  }
+  getAllChosenDishes() {
+    const url = `${BASE_URL}/recipes/search?number=10&offset=0&type='`+ this.type +`&query=` + this.filter;
+    return fetch(url, httpOptions).then(this.processResponse);
+  }
+
+  getDish (id) {
+    const url = `${BASE_URL}/recipes/`+ id +`/information`;
+    return fetch(url, httpOptions
+  ).then(this.processResponse);
+
   }
 
   processResponse(response) {
