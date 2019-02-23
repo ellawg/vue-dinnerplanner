@@ -12,6 +12,8 @@
       <br>
       Total number of guests: {{ numberOfGuests }}
     </p>
+    <p>Menu:</p>
+    <p v-for="dish in menu" :id="dish.id" :key="dish.id">{{dish.title}}</p>
   </div>
 </template>
 
@@ -33,7 +35,8 @@ export default {
   // we define and initalise the data we want to use and modify in the component
   data() {
     return {
-      numberOfGuests: this.model.getNumberOfGuests()
+      numberOfGuests: this.model.getNumberOfGuests(),
+      menu: this.model.getFullMenu()
     };
   },
 

@@ -11,6 +11,8 @@ class DinnerModel extends ObservableModel {
     super();
     this._numberOfGuests = 4;
     this.getNumberOfGuests();
+    this._menu = [];
+    this.getFullMenu();
   }
 
   /**
@@ -27,6 +29,23 @@ class DinnerModel extends ObservableModel {
    */
   setNumberOfGuests(num) {
     this._numberOfGuests = num;
+    this.notifyObservers();
+  }
+
+  /**
+   * Get the menu
+   * @returns {array}
+   */
+   getFullMenu(){
+     return this._menu;
+   }
+
+   /**
+   * Add dish to menu
+   * @param {object} dish
+   */
+  addDishToMenu(dish){
+    this._menu.push(dish)
     this.notifyObservers();
   }
 

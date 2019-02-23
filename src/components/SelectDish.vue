@@ -25,7 +25,7 @@
           </form>
           <button class="button" type="button" id="searchBtn">Search</button>
         </div>
-        <dishes/>
+        <dishes :model="this.model"/>
       </div>
     </div>
   </div>

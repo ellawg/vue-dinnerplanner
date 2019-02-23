@@ -4,7 +4,7 @@
     <div class="columns">
       <em v-if='status === "LOADING"'>Loading...</em>
       <b v-else-if='status === "ERROR"'>Failed to load data, please try again</b>
-      <dishitem v-for="dish in dishes" :id="dish.id" :key="dish.id" v-bind:dish="dish"> </dishitem>
+      <dishitem v-for="dish in dishes" :id="dish.id" :key="dish.id" v-bind:dish="dish" :model="model"> </dishitem>
     </div>
   </div>
 </template>
@@ -16,6 +16,7 @@
   import DishItem from "@/components/DishItem";
 
   export default {  
+    props: ["model"],
     components: {
       dishitem: DishItem
     },
