@@ -12,11 +12,10 @@ class DinnerModel extends ObservableModel {
     super();
     this._numberOfGuests = 4;
     this.getNumberOfGuests();
-    this.menu = [];
+    this._menu = [];
     this.type = "all";
     this.filter = "";
     
-    this.getFullMenu();
   }
 
   /**
@@ -40,6 +39,40 @@ class DinnerModel extends ObservableModel {
 		this.dishId = id;
 		this.notifyObservers('dishDetailsId');
 	}
+
+  getDishId() {
+		return this.dishId;
+	}
+
+  getFullMenu() {
+    return this._menu;
+  }
+
+  setFilter(filter){
+    this.filter = filter;
+    this.notifyObservers("search")
+  }
+  setType(type){
+    this.type= type;
+    this.notifyObservers("search")
+  }
+  
+  addDishToMenu(dish) {
+		const menu = this.getFullMenu();
+		let exists = false;
+			menu.forEach(function(item){
+				if (dish.id === item.id){
+					exists = true;
+				}
+			})
+			if (exists === false){
+				menu.push(dish)
+			}
+			else{
+				alert('Dish already in menu');
+			}
+	this.notifyObservers('addDishToMenu');
+}
 
   // API methods
 
