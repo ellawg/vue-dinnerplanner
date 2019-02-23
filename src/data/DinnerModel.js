@@ -6,11 +6,16 @@ const httpOptions = {
   headers: { "X-Mashape-Key": apiKey }
 };
 
+
 class DinnerModel extends ObservableModel {
   constructor() {
     super();
     this._numberOfGuests = 4;
     this.getNumberOfGuests();
+    this.menu = [];
+    this.type = "all";
+    this.filter = "";
+    
   }
 
   /**
@@ -25,10 +30,50 @@ class DinnerModel extends ObservableModel {
    * Set number of guests
    * @param {number} num
    */
+  
   setNumberOfGuests(num) {
     this._numberOfGuests = num;
     this.notifyObservers();
   }
+  setDishId(id) {
+		this.dishId = id;
+		this.notifyObservers('dishDetailsId');
+	}
+
+  getDishId() {
+		return this.dishId;
+	}
+
+  getFullMenu() {
+    return this.menu;
+  }
+
+  setFilter(filter){
+    this.filter = filter;
+    this.notifyObservers("search")
+  }
+  setType(type){
+    this.type= type;
+    this.notifyObservers("search")
+  }
+  
+  addDishToMenu(dish) {
+		//TODO Lab 1
+		const menu = this.getFullMenu();
+		let exists = false;
+			menu.forEach(function(item){
+				if (dish.id === item.id){
+					exists = true;
+				}
+			})
+			if (exists === false){
+				menu.push(dish)
+			}
+			else{
+				alert('Dish already in menu');
+			}
+	this.notifyObservers('addDishToMenu');
+}
 
   // API methods
 
@@ -39,6 +84,17 @@ class DinnerModel extends ObservableModel {
   getAllDishes() {
     const url = `${BASE_URL}/recipes/search`;
     return fetch(url, httpOptions).then(this.processResponse);
+  }
+  getAllChosenDishes() {
+    const url = `${BASE_URL}/recipes/search?number=10&offset=0&type='`+ this.type +`&query=` + this.filter;
+    return fetch(url, httpOptions).then(this.processResponse);
+  }
+
+  getDish (id) {
+    const url = `${BASE_URL}/recipes/`+ id +`/information`;
+    return fetch(url, httpOptions
+  ).then(this.processResponse);
+
   }
 
   processResponse(response) {

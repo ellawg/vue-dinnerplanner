@@ -5,10 +5,11 @@
       <!-- We pass the model as property to the Sidebar component -->
       <sidebar :model="this.model"/>
       <div class="search-dishes">
+        <h1>Find a Dish</h1>
         <div class="search-bar">
-          <input class="input" id="searchInput" type="text" placeholder="Enter key words" value>
+          <input v-model="filter" class="input" id="searchInput" type="text" placeholder="Enter key words" value @keyup.enter="Search()">
           <form class="select">
-            <select id="typeOption">
+            <select id="typeOption" v-model="type" @keyup.enter="Search()">
               <option value="all">All</option>
               <option value="side dish">Side dish</option>
               <option value="main course">Main course</option>
@@ -23,7 +24,7 @@
               <option value="drink">Drink</option>
             </select>
           </form>
-          <button class="button" type="button" id="searchBtn">Search</button>
+          <button class="button" type="button" id="searchBtn" v-on:click="Search()">Search</button>
         </div>
         <dishes/>
       </div>
@@ -40,6 +41,19 @@ export default {
   components: {
     sidebar: Sidebar,
     dishes: Dishes
+  },
+  data() {
+    return {
+      type: "all",
+      filter: "",
+    }
+  },
+  methods: {
+    Search(){
+      this.model.setFilter(this.filter);
+      this.model.setType(this.type);
+
+    }
   }
 };
 </script>

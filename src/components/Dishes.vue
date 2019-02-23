@@ -31,11 +31,25 @@
       }).catch(() => {
         this.status = "ERROR"
       })
+      modelInstance.addObserver(this);
     },
     data() {
       return {
         status: "LOADING",
         dishes: []
+      }
+    },
+    methods:{
+
+      update(model, changeDetails){
+        if (changeDetails ==="search"){
+        modelInstance.getAllChosenDishes().then(dishes => {
+        this.status = "LOADED"
+        this.dishes = dishes.results
+      }).catch(() => {
+        this.status = "ERROR"
+      })
+        }
       }
     }
   }
