@@ -17,10 +17,11 @@
         <th>Dish Name</th>
         <th>Cost</th>
       </tr>
+      <tr v-for="dish in menu" :id="dish.id" :key="dish.id"><td>{{dish.title}}</td></tr>
     </table>
-    <button>Confirm Dinner</button>
-    <p>Menu:</p>
-    <p v-for="dish in menu" :id="dish.id" :key="dish.id">{{dish.title}}</p>
+    <button class="confirmButton">Confirm Dinner</button>
+    
+    
   </div>
 </template>
 
@@ -67,4 +68,12 @@ export default {
   min-width: 20vw;
   padding: 0 2% 0 2%;
 }
+
+th{
+  text-align: left;
+}
+table{
+  width:80%
+}
+
 </style>
