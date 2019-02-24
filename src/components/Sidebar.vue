@@ -65,15 +65,17 @@ export default {
 <style>
 .sidebar {
   flex-grow: 1;
-  min-width: 20vw;
+  min-width: 200px;
+  max-width: 20vw;
   padding: 0 2% 0 2%;
 }
 
 th{
   text-align: left;
 }
-table{
-  width:80%
+
+td{
+  max-width:300px;
 }
 
 </style>

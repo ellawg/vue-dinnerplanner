@@ -1,7 +1,9 @@
 <template>
   <div class="item">
     <img :src="url + dish.image">
-    <p>{{ dish.title }}</p>
+    <router-link to="/details">
+      <button>{{ dish.title }}</button>
+    </router-link>
     <button @click="onDidChangeMenu">Add dish to menu</button>
   </div>
 </template>
