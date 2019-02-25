@@ -21,7 +21,7 @@ export default new Router({
       props: { model: modelInstance }
     },
     {
-      path: "/details",
+      path: "/dishdetails",
       name: "DishDetails",
       component: DishDetails,
       props: { model: modelInstance }

@@ -57,16 +57,18 @@
 </script>
 <style>
 .item{
-    min-width: 190px;
-    max-width: 190px;
-    height: 230px;
-    margin: 20px;
-    text-align: center;
+  min-width: 190px;
+  max-width: 190px;
+  margin: 20px;
+  text-align: center;
+}
+.item-link{
+  height: 230px;
 }
 
-.item img{
-    width: 100%;
-    height: 70%;
+.item-link img{
+  width: 100%;
+  height: 70%;
 }
 
 .dish-container{
