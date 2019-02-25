@@ -1,13 +1,14 @@
 <template>
   <div class="item">
-    <img :src="url + dish.image">
-    <p>{{ dish.title }}</p>
+      <div class="item-link" @click="$router.push({ name: 'DishDetails', params: { dish: dish } })">
+        <img :src="url + dish.image">
+        <p>{{ dish.title }}</p>
+      </div>
     <button @click="onDidChangeMenu">Add dish to menu</button>
   </div>
 </template>
 
 <script>
-
 export default {
   props: ["model", "dish"],
   data() {

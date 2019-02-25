@@ -17,11 +17,12 @@
         <th>Dish Name</th>
         <th>Cost</th>
       </tr>
-      <tr v-for="dish in menu" :id="dish.id" :key="dish.id"><td>{{dish.title}}</td></tr>
+      <tr v-for="dish in menu" :id="dish.id" :key="dish.id">
+        <td>{{dish.title}}</td>
+        <td>{{ numberOfGuests }} SEK</td>
+      </tr>
     </table>
     <button class="confirmButton">Confirm Dinner</button>
-    
-    
   </div>
 </template>
 
@@ -66,14 +67,11 @@ export default {
 .sidebar {
   flex-grow: 1;
   min-width: 20vw;
+  max-width: 20vw;
   padding: 0 2% 0 2%;
 }
 
-th{
+th {
   text-align: left;
 }
-table{
-  width:80%
-}
-
 </style>
