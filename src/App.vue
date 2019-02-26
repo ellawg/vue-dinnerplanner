@@ -27,7 +27,7 @@ body{
   margin:0;
 }
 
-.columns {
+.vue-columns {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
