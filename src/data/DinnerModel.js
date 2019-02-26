@@ -35,6 +35,7 @@ class DinnerModel extends ObservableModel {
     this._numberOfGuests = num;
     this.notifyObservers();
   }
+
   setDishId(id) {
 		this.dishId = id;
 		this.notifyObservers('dishDetailsId');
@@ -87,6 +88,11 @@ class DinnerModel extends ObservableModel {
   getAllChosenDishes() {
     const url = `${BASE_URL}/recipes/search?number=10&offset=0&type='`+ this.type +`&query=` + this.filter;
     return fetch(url, httpOptions).then(this.processResponse);
+  }
+
+  getDish(id){
+    const url = `${BASE_URL}/recipes/`+id+ `/information`;
+    return fetch(url,httpOptions).then(this.processResponse)
   }
 
   processResponse(response) {

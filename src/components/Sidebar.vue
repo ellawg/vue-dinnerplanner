@@ -22,6 +22,7 @@
         <td>{{ numberOfGuests }} SEK</td>
       </tr>
     </table>
+    <p>Total price:</p>
     <button class="confirmButton">Confirm Dinner</button>
   </div>
 </template>
