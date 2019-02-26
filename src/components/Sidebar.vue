@@ -23,7 +23,7 @@
       </tr>
     </table>
     <p>Total price:</p>
-    <button class="confirmButton">Confirm Dinner</button>
+    <button class="button">Confirm Dinner</button>
   </div>
 </template>
 
@@ -66,9 +66,10 @@ export default {
 </script>
 <style>
 .sidebar {
+  
   flex-grow: 1;
-  min-width: 20vw;
-  max-width: 20vw;
+  min-width: 200px;
+  max-width: 25vw;
   padding: 0 2% 0 2%;
 }
 

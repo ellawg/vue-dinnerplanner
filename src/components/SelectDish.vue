@@ -64,7 +64,7 @@ export default {
 
 .search-dishes {
   display: flex;
-  flex-grow: 3;
+  flex-grow: 2;
   flex-direction: column;
   padding: 2% 0 0 0;
 }

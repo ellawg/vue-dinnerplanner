@@ -4,7 +4,7 @@
         <img :src="url + dish.image">
         <p>{{ dish.title }}</p>
       </div>
-    <button @click="onDidChangeMenu">Add dish to menu</button>
+    <button class="button" @click="onDidChangeMenu">Add dish to menu</button>
   </div>
 </template>
 
