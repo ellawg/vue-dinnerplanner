@@ -41,10 +41,9 @@
       }
     },
     methods:{
-
       update(model, changeDetails){
-        if (changeDetails ==="search"){
-        modelInstance.getAllChosenDishes().then(dishes => {
+        if (changeDetails === "search"){
+        this.model.getAllChosenDishes().then(dishes => {
         this.status = "LOADED"
         this.dishes = dishes.results
       }).catch(() => {

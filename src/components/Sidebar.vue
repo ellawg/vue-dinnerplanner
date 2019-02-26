@@ -8,6 +8,7 @@
         :value="numberOfGuests"
         @input="onDidChangeNumberOfGuests"
         @change="onDidChangeNumberOfGuests"
+
       >
       <br>
       Total number of guests: {{ numberOfGuests }}
