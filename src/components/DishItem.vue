@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-      <div class="item-link" @click="$router.push({ name: 'DishDetails', params: { dish: dish } })">
+      <div class="item-link" @click="$router.push({ name: 'DishDetails', params: { dishId: dish.id } })">
         <img :src="url + dish.image">
         <p>{{ dish.title }}</p>
       </div>

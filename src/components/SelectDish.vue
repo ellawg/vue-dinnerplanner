@@ -52,7 +52,6 @@ export default {
     Search(){
       this.model.setFilter(this.filter);
       this.model.setType(this.type);
-
     }
   }
 };

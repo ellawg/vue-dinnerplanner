@@ -12,7 +12,7 @@
 <script>
   // Alternative to passing the moderl as the component property,
   // we can import the model instance directly
-  import modelInstance from "../data/DinnerModel";
+
   import DishItem from "@/components/DishItem";
 
   export default {  
@@ -26,13 +26,13 @@
     mounted() {
       // when data is retrieved we update it's properties
       // this will cause the component to re-render
-      modelInstance.getAllDishes().then(dishes => {
+      this.model.getAllDishes().then(dishes => {
         this.status = "LOADED"
         this.dishes = dishes.results
       }).catch(() => {
         this.status = "ERROR"
       })
-      modelInstance.addObserver(this);
+      this.model.addObserver(this);
     },
     data() {
       return {
