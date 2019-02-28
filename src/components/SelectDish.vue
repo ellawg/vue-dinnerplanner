@@ -61,7 +61,6 @@ export default {
   padding: 0 0 0 2%;
 }
 
-
 .search-dishes {
   display: flex;
   flex-grow: 2;
@@ -71,5 +70,6 @@ export default {
 .search-bar {
   display:flex;
   flex-direction: row;
+  padding-right: 20vw;
 }
 </style>
