@@ -8,7 +8,6 @@
         :value="numberOfGuests"
         @input="onDidChangeNumberOfGuests"
         @change="onDidChangeNumberOfGuests"
-
       >
       <br>
       Total number of guests: {{ numberOfGuests }}
@@ -24,7 +23,7 @@
       </tr>
     </table>
     <p>Total price:</p>
-    <button class="button">Confirm Dinner</button>
+      <button class="button" @click="$router.push({ name: 'Overview', params: { menu: menu }})">Confirm Dinner</button>
   </div>
 </template>
 
@@ -67,7 +66,6 @@ export default {
 </script>
 <style>
 .sidebar {
-  
   flex-grow: 1;
   min-width: 200px;
   max-width: 25vw;
@@ -78,8 +76,7 @@ th {
   text-align: left;
 }
 
-td{
-  max-width:300px;
+td {
+  max-width: 300px;
 }
-
 </style>
