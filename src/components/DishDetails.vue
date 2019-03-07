@@ -12,6 +12,9 @@
         <h3>Ingredients for: {{numberOfGuests}} people</h3>
         <table></table>
       </div>
+      <router-link to="/search">
+        <button class="button">Back to search</button>
+      </router-link>
     </div>
   </div>
 </template>
