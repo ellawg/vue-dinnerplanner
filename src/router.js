@@ -4,6 +4,7 @@ import Welcome from "@/components/Welcome";
 import SelectDish from "@/components/SelectDish";
 import DishDetails from "@/components/DishDetails";
 import Overview from "@/components/Overview";
+import Printout from "@/components/Printout";
 import modelInstance from "@/data/DinnerModel";
 
 Vue.use(Router);
@@ -31,6 +32,12 @@ export default new Router({
       path: "/overview",
       name: "Overview",
       component: Overview,
+      props: { model: modelInstance }
+    },
+    {
+      path: "/printout",
+      name: "Printout",
+      component: Printout,
       props: { model: modelInstance }
     }
   ]
