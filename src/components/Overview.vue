@@ -1,7 +1,11 @@
    <template>
   <div class="overview">
-    <div class="menuList"></div>
-    <div class="dishPrice">{{menu}}</div>
+    <div class="menuList">
+      <dishitem v-for="dish in $route.params.menu" :id="dish.id" :key="dish.id" v-bind:dish="dish" :model="model"> 
+      </dishitem>
+    </div>
+    <div class="dishPrice"></div>
+    
   </div>
 </template><!--
     var menuList = $("<div/>").addClass("menuList");
@@ -25,10 +29,12 @@
         container.append(this.printButton);
     }-->
 <script>
+import DishItem from "@/components/DishItem";
+
 export default {
-  props: ["model", "menu"],
-  mounted() {
-        console.log(this.menu);
+  props: ["model"],
+  components:{
+   dishitem: DishItem
   }
 };
 </script>
