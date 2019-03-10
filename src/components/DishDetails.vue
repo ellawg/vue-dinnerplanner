@@ -4,9 +4,9 @@
     <div class="detailsInfo">
       <!--<p>{{$route.params.dish}}</p>-->
       <div class="nameImgDesc">
-        <h1>{{this.dish.title}}</h1>
-        <img :src="this.dish.image">
-        <p>{{this.dish.instructions}}</p>
+        <h1>{{dish.title}}</h1>
+        <img :src="dish.image">
+        <p>{{dish.instructions}}</p>
       </div>
       <div class="ingredientContainer">
         <h3>Ingredients for: {{numberOfGuests}} people</h3>
