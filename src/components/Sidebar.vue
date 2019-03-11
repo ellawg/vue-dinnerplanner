@@ -23,19 +23,29 @@
       </tr>
     </table>
     <p>Total price:</p>
-      <button class="button" @click="$router.push({ name: 'Overview', params: { menu: menu }})">Confirm Dinner</button>
+    <button
+      class="button"
+      @click="$router.push({ name: 'Overview', params: { menu: menu }})"
+    >Confirm Dinner</button>
   </div>
 </template>
 
 <script>
 export default {
   props: ["model"],
-  // this methods is called by React lifecycle when the
-  // component is created that's a good place to setup model observer
+  mounted() {
+    if (localStorage.numberOfGuests) {
+      this.numberOfGuests = localStorage.numberOfGuests;
+    }
+  },
+  watch: {
+    name(newNumberOfGuests) {
+      localStorage.numberOfGuests = newNumberOfGuests;
+    }
+  },
   created() {
     this.model.addObserver(this);
   },
-
   // this is called when component is removed destroyed
   // good place to remove observer
   beforeDestroy() {
@@ -54,10 +64,12 @@ export default {
     // in our update function we modify the the property of
     // the compoented which will cause the component to re-render
     update(model, changeDetails) {
-      if (changeDetails==="numberOfGuests"){
+      if (changeDetails === "numberOfGuests") {
         this.numberOfGuests = this.model.getNumberOfGuests();
+        localStorage.setItem('numberOfGuests', this.numberOfGuests);
+
       }
-      if (changeDetails==="addDishToMenu"){
+      if (changeDetails === "addDishToMenu") {
         this.menu = this.model.getFullMenu();
       }
     },
