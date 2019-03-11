@@ -33,7 +33,7 @@ class DinnerModel extends ObservableModel {
   
   setNumberOfGuests(num) {
     this._numberOfGuests = num;
-    this.notifyObservers();
+    this.notifyObservers('numberOfGuests');
   }
 
   getFullMenu() {

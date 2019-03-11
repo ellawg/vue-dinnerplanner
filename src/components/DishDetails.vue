@@ -2,7 +2,6 @@
   <div class="dishDetails">
     <sidebar :model="this.model"/>
     <div class="detailsInfo">
-      <!--<p>{{$route.params.dish}}</p>-->
       <div class="nameImgDesc">
         <h1>{{dish.title}}</h1>
         <img :src="dish.image">
@@ -15,6 +14,7 @@
       <router-link to="/search">
         <button class="button">Back to search</button>
       </router-link>
+      <button class="button" @click="onDidChangeMenu">Add dish to menu</button>
     </div>
   </div>
 </template>
@@ -23,21 +23,21 @@ import Sidebar from "@/components/Sidebar";
 
 export default {
   props: ["model", "dishId"],
-
+  components: {
+    sidebar: Sidebar
+  },
+    data() {
+    return {
+      url: "https://spoonacular.com/recipeImages/",
+      dish: {},
+      numberOfGuests: this.model.getNumberOfGuests()
+    };
+  },
   created() {
     this.model.addObserver(this);
   },
-
   beforeDestroy() {
     this.model.removeObserver(this);
-  },
-  methods: {
-    update() {
-      this.numberOfGuests = this.model.getNumberOfGuests();
-    }
-  },
-  components: {
-    sidebar: Sidebar
   },
   mounted() {
     // when data is retrieved we update it's properties
@@ -53,14 +53,17 @@ export default {
       });
     this.model.addObserver(this);
   },
-
-  data() {
-    return {
-      url: "https://spoonacular.com/recipeImages/",
-      dish: {},
-      numberOfGuests: this.model.getNumberOfGuests()
-    };
-  }
+  methods: {
+    update(model, changeDetails) {
+      if (changeDetails === "numberOfGuests") {
+        this.numberOfGuests = this.model.getNumberOfGuests();
+      }
+    },
+    // our handler for the input's on change event
+    onDidChangeMenu() {
+      this.model.addDishToMenu(this.dish);
+    }
+  },
 };
 </script>
 

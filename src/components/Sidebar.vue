@@ -53,8 +53,13 @@ export default {
   methods: {
     // in our update function we modify the the property of
     // the compoented which will cause the component to re-render
-    update() {
-      this.numberOfGuests = this.model.getNumberOfGuests();
+    update(model, changeDetails) {
+      if (changeDetails==="numberOfGuests"){
+        this.numberOfGuests = this.model.getNumberOfGuests();
+      }
+      if (changeDetails==="addDishToMenu"){
+        this.menu = this.model.getFullMenu();
+      }
     },
 
     // our handler for the input's on change event
