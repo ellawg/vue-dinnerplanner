@@ -36,15 +36,6 @@ class DinnerModel extends ObservableModel {
     this.notifyObservers();
   }
 
-  setDishId(id) {
-		this.dishId = id;
-		this.notifyObservers('dishDetailsId');
-	}
-
-  getDishId() {
-		return this.dishId;
-	}
-
   getFullMenu() {
     return this._menu;
   }

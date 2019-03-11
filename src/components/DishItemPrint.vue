@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <div class="dish-item-print">
-      <img :src="url + newDish.image">
+      <img :src="newDish.image">
       <p>{{ newDish.title }}</p>
       <p>{{ newDish.instructions }}</p>
     </div>
@@ -13,7 +13,6 @@ export default {
   props: ["model", "dish"],
   data() {
     return {
-      url: "https://spoonacular.com/recipeImages/",
       newDish: {}
     };
   },
