@@ -99,17 +99,28 @@ export default {
 .ingredientsContainer > {
   padding:200px;
 }
-p {
-  width:70%;
-}
 
 img {
-  width: 40%;
+  width: 100%;
   height: 10%;
+}
+
+.nameImgDesc h1 {
+  font-size: 30px;
+}
+
+.nameImgDesc > *{
+  padding-bottom: 20px;
 }
 
 .ingredientsContainer > table{
 padding: 12vw;
 width: 24vw;
 }
+
+.ingredientsContainer > *{
+  padding-bottom: 10px;
+}
+
+
 </style>
