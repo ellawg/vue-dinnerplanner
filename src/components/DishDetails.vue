@@ -7,14 +7,23 @@
         <img :src="dish.image">
         <p>{{dish.instructions}}</p>
       </div>
-      <div class="ingredientContainer">
-        <h3>Ingredients for: {{numberOfGuests}} people</h3>
-        <table></table>
+      <div class="ingredientsContainer">
+        <p>Ingredients for: {{numberOfGuests}} people</p>
+        <table>
+          <tr v-for="dishItem in dish.extendedIngredients" :key="dishItem.id">
+            <td>{{dishItem.amount}} {{dishItem.unit}}</td>
+            <td>{{dishItem.name}}</td>
+            <td>{{dishItem.amount * numberOfGuests + ' SEK'}}</td>
+          </tr>
+        </table>
+       
+        <div class="buttons">
+        <router-link to="/search">
+          <button class="button">Back to search</button>
+        </router-link>
+        <button class="button" @click="onDidChangeMenu">Add dish to menu</button>
+        </div>
       </div>
-      <router-link to="/search">
-        <button class="button">Back to search</button>
-      </router-link>
-      <button class="button" @click="onDidChangeMenu">Add dish to menu</button>
     </div>
   </div>
 </template>
@@ -26,7 +35,7 @@ export default {
   components: {
     sidebar: Sidebar
   },
-    data() {
+  data() {
     return {
       url: "https://spoonacular.com/recipeImages/",
       dish: {},
@@ -63,7 +72,7 @@ export default {
     onDidChangeMenu() {
       this.model.addDishToMenu(this.dish);
     }
-  },
+  }
 };
 </script>
 
@@ -72,9 +81,35 @@ export default {
   display: flex;
   flex-direction: row;
 }
+.detailsInfo {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+}
+.nameImgDesc{
+  display: flex;
+  flex-direction: column;
+}
+.ingredientsContainer{
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  
+}
+.ingredientsContainer > {
+  padding:200px;
+}
+p {
+  width:70%;
+}
 
 img {
   width: 40%;
   height: 10%;
+}
+
+.ingredientsContainer > table{
+padding: 12vw;
+width: 24vw;
 }
 </style>
