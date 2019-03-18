@@ -6,16 +6,16 @@ const httpOptions = {
   headers: { "X-Mashape-Key": apiKey }
 };
 
-
 class DinnerModel extends ObservableModel {
   constructor() {
     super();
-    this._numberOfGuests = 4;
     this.getNumberOfGuests();
-    this._menu = [];
+    this._numberOfGuests = localStorage.numberOfGuests
+      ? localStorage.numberOfGuests
+      : 4;
+    this._menu = localStorage.menu ? JSON.parse(localStorage.menu) : [];
     this.type = "all";
     this.filter = "";
-    
   }
 
   /**
@@ -30,41 +30,54 @@ class DinnerModel extends ObservableModel {
    * Set number of guests
    * @param {number} num
    */
-  
+
   setNumberOfGuests(num) {
     this._numberOfGuests = num;
-    this.notifyObservers('numberOfGuests');
+    localStorage.numberOfGuests = num;
+    this.notifyObservers("numberOfGuests");
   }
 
-  getFullMenu() {
+  getMenu() {
     return this._menu;
   }
+  setMenu(menu) {
+    this._menu = menu;
+  }
 
-  setFilter(filter){
+  setFilter(filter) {
     this.filter = filter;
-    this.notifyObservers("search")
+    this.notifyObservers("search");
   }
-  setType(type){
-    this.type= type;
-    this.notifyObservers("search")
+  setType(type) {
+    this.type = type;
+    this.notifyObservers("search");
   }
-  
+
+  getTotalDishPrice(dish){
+    let totalPrice = 0;
+    dish.extendedIngredients.forEach(function(dishItem){
+      totalPrice += dishItem.amount;
+    });
+    return totalPrice;
+  }
+
   addDishToMenu(dish) {
-		const menu = this.getFullMenu();
-		let exists = false;
-			menu.forEach(function(item){
-				if (dish.id === item.id){
-					exists = true;
-				}
-			})
-			if (exists === false){
-				menu.push(dish)
-			}
-			else{
-				alert('Dish already in menu');
-			}
-	this.notifyObservers('addDishToMenu');
-}
+    const menu = this.getMenu();
+    let exists = false;
+    menu.forEach(function(item) {
+      if (dish.id === item.id) {
+        exists = true;
+      }
+    });
+    if (exists === false) {
+      menu.push(dish);
+    } else {
+      alert("Dish already in menu");
+    }
+    this.setMenu(menu);
+    localStorage.menu = JSON.stringify(menu);
+    this.notifyObservers("addDishToMenu");
+  }
 
   // API methods
 
@@ -77,12 +90,16 @@ class DinnerModel extends ObservableModel {
     return fetch(url, httpOptions).then(this.processResponse);
   }
   getAllChosenDishes() {
-    const url = `${BASE_URL}/recipes/search?number=10&offset=0&type='`+ this.type +`&query=` + this.filter;
+    const url =
+      `${BASE_URL}/recipes/search?number=10&offset=0&type='` +
+      this.type +
+      `&query=` +
+      this.filter;
     return fetch(url, httpOptions).then(this.processResponse);
   }
 
-  getDish(id){
-    const url = `${BASE_URL}/recipes/`+ id + `/information`;
+  getDish(id) {
+    const url = `${BASE_URL}/recipes/` + id + `/information`;
     return fetch(url, httpOptions).then(this.processResponse);
   }
 
