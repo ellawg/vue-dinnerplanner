@@ -56,10 +56,17 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
+.item{
+  min-width: 190px;
+  max-width: 190px;
+  margin: 20px;
+  text-align: center;
+}
 .select-dish{
   padding: 0 0 0 2%;
 }
+
 
 .search-dishes {
   display: flex;
@@ -72,4 +79,5 @@ export default {
   flex-direction: row;
   padding-right: 20vw;
 }
+
 </style>
