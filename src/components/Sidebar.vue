@@ -33,15 +33,12 @@
 <script>
 export default {
   props: ["model"],
-  mounted() {
-    if (localStorage.numberOfGuests) {
-      this.numberOfGuests = localStorage.numberOfGuests;
-    }
-  },
-  watch: {
-    name(newNumberOfGuests) {
-      localStorage.numberOfGuests = newNumberOfGuests;
-    }
+    // we define and initalise the data we want to use and modify in the component
+  data() {
+    return {
+      numberOfGuests: this.model.getNumberOfGuests(),
+      menu: this.model.getMenu()
+    };
   },
   created() {
     this.model.addObserver(this);
@@ -51,15 +48,6 @@ export default {
   beforeDestroy() {
     this.model.removeObserver(this);
   },
-
-  // we define and initalise the data we want to use and modify in the component
-  data() {
-    return {
-      numberOfGuests: this.model.getNumberOfGuests(),
-      menu: this.model.getFullMenu()
-    };
-  },
-
   methods: {
     // in our update function we modify the the property of
     // the compoented which will cause the component to re-render
@@ -70,7 +58,7 @@ export default {
 
       }
       if (changeDetails === "addDishToMenu") {
-        this.menu = this.model.getFullMenu();
+        this.menu = this.model.getMenu();
       }
     },
 
