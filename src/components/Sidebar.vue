@@ -99,40 +99,38 @@ export default {
   max-width: 25vw;
   padding: 0 2% 0 2%;
 }
-.navbar{
+.navbar {
   display: flex;
   flex-direction: column;
 }
-.navbar-item{
+.navbar-item {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 .navbar-item > * {
-  padding-bottom:10px;
+  padding-bottom: 10px;
 }
-.navbar-end{
- margin:5px;
+.navbar-end {
+  margin: 5px;
 }
-
 
 th {
   text-align: left;
 }
 td {
   max-width: 150px;
-  margin-right:5px;
+  margin-right: 5px;
 }
-.text{
-  margin:10px;
+.text {
+  margin: 10px;
 }
-@media screen and (max-width: 750px){
-
-  td{
-    width:100%;
+@media screen and (max-width: 750px) {
+  td {
+    width: 100%;
   }
-  .navbar{
-    width:90vw;
+  .navbar {
+    width: 90vw;
   }
 }
 </style>
