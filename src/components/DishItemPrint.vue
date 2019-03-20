@@ -61,7 +61,7 @@ export default {
 }
 
 .dish-item-print > * {
-  padding: 20px;
+  padding: 10px;
 }
 </style>
 
