@@ -5,7 +5,7 @@
       <div class="nameImgDesc">
         <h1>{{dish.title}}</h1>
         <img :src="dish.image">
-        <p>{{dish.instructions}}</p>
+        <p class="instructions">{{dish.instructions}}</p>
       </div>
       <div class="ingredientsContainer">
         <p>Ingredients for: {{numberOfGuests}} people</p>
@@ -79,11 +79,11 @@ export default {
 <style>
 .dishDetails {
   display: flex;
-  flex-direction: row;
+  flex-flow: wrap row;
 }
 .detailsInfo {
   display: flex;
-  flex-direction: row;
+  flex-flow: wrap row;
   margin: 20px;
 }
 .nameImgDesc{
@@ -100,9 +100,14 @@ export default {
   padding:200px;
 }
 
+.instructions {
+  max-width: 500px;
+  min-width: 100px;
+}
+
 img {
-  width: 100%;
-  height: 10%;
+  width: 400px;;
+  height: auto;
 }
 
 .nameImgDesc h1 {

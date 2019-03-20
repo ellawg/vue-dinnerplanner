@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <div class="item">
       <div class="dish-item-print">
         <img :src="newDish.image">
@@ -43,18 +43,17 @@ export default {
 .dish-item-print {
   display: flex;
   flex-flow: wrap row;
-  justify-content: space-between;
   text-align: left;
 }
-.dishTitle{
-  max-width: 300px;
-  min-width: 300px;
+.dishTitle {
+  max-width: 200px;
+  min-width: 100px;
   font-size: 24px;
   font-weight: bold;
 }
-.desc{
+.desc {
   max-width: 500px;
-  min-width: 250px;
+  min-width: 300px;
 }
 .dish-item-print > img {
   width: 500px;
