@@ -113,7 +113,7 @@ export default {
   padding-bottom: 10px;
 }
 .navbar-end {
-  margin: 5px;
+  margin: 5px !important;
 }
 
 th {

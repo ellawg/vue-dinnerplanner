@@ -2,6 +2,10 @@
   <div class="dishDetails">
     <sidebar :model="this.model"/>
     <div class="detailsInfo">
+      <em v-if='status === "LOADING"'>
+          Loading...
+        </em>
+        <em v-if='status === "ERROR"'>Failed to load data, please try again.</em>
       <div class="nameImgDesc">
         <h1>{{dish.title}}</h1>
         <img :src="dish.image">
@@ -40,6 +44,7 @@ export default {
   },
   data() {
     return {
+      status: "LOADING",
       url: "https://spoonacular.com/recipeImages/",
       dish: {},
       numberOfGuests: this.model.getNumberOfGuests()
