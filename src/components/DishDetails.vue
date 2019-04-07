@@ -15,13 +15,16 @@
             <td>{{dishItem.name}}</td>
             <td>{{dishItem.amount * numberOfGuests + ' SEK'}}</td>
           </tr>
+          <tr
+            v-if="dish.extendedIngredients"
+          >Total cost: {{dish.extendedIngredients.length * this.numberOfGuests}}</tr>
         </table>
-       
+
         <div class="buttons">
-        <router-link to="/search">
-          <button class="button">Back to search</button>
-        </router-link>
-        <button class="button" @click="onDidChangeMenu">Add dish to menu</button>
+          <router-link to="/search">
+            <button class="button">Back to search</button>
+          </router-link>
+          <button class="button" @click="onDidChangeMenu">Add dish to menu</button>
         </div>
       </div>
     </div>
@@ -106,7 +109,7 @@ export default {
 }
 
 img {
-  width: 400px;;
+  width: 400px;
   height: auto;
 }
 
@@ -114,18 +117,16 @@ img {
   font-size: 30px;
 }
 
-.nameImgDesc > *{
+.nameImgDesc > * {
   padding-bottom: 20px;
 }
 
-.ingredientsContainer > table{
-padding: 12vw;
-width: 24vw;
+.ingredientsContainer > table {
+  padding: 12vw;
+  width: 24vw;
 }
 
-.ingredientsContainer > *{
+.ingredientsContainer > * {
   padding-bottom: 10px;
 }
-
-
 </style>

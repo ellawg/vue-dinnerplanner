@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    <h3>This is the sidebar</h3>
+    <!-- <h3>This is the sidebar</h3>-->
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <p class="text">My dinner</p>
@@ -38,10 +38,11 @@
               </tr>
               <tr v-for="dish in menu" :id="dish.id" :key="dish.id">
                 <td>{{dish.title}}</td>
-                <td>{{ numberOfGuests }} SEK</td>
+                <td
+                  v-if="dish.extendedIngredients"
+                >{{dish.extendedIngredients.length * numberOfGuests}}</td>
               </tr>
             </table>
-            <p>Total price:</p>
             <button
               class="button"
               @click="$router.push({ name: 'Overview', params: { menu: menu }})"

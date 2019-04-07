@@ -1,6 +1,6 @@
 <template>
   <div class="select-dish">
-    <h2>This is the Select Dish screen</h2>
+    <!--<h2>This is the Select Dish screen</h2>-->
     <div class="vue-columns">
       <!-- We pass the model as property to the Sidebar component -->
       <sidebar :model="this.model"/>
