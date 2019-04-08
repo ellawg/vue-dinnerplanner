@@ -3,7 +3,7 @@
     <sidebar :model="this.model"/>
     <div class="detailsInfo">
       <em v-if='status === "LOADING"'>
-          Loading...
+          <img class="loader" src="../loader.gif">
         </em>
         <em v-if='status === "ERROR"'>Failed to load data, please try again.</em>
       <div class="nameImgDesc">

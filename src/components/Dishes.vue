@@ -1,8 +1,10 @@
 <template>
   <div class="dish-container">
-    <h3>Dishes</h3>
+   <!-- <h3>Dishes</h3> -->
     <div class="vue-columns">
-      <em v-if='status === "LOADING"'>Loading...</em>
+      <em v-if='status === "LOADING"'>
+        <img class="loader" src="../loader.gif">
+      </em>
       <b v-else-if='status === "ERROR"'>Failed to load data, please try again</b>
       <dishitem v-for="dish in dishes" :id="dish.id" :key="dish.id" v-bind:dish="dish" :model="model"> </dishitem>
     </div>
@@ -64,6 +66,9 @@
 
 .dish-container{
   max-width: 70vw;
+}
+.loader{
+  margin: 20px;
 }
 
 </style>
