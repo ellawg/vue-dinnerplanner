@@ -22,9 +22,9 @@
           <tr>
            
           </tr>
-          <tr
-            v-if="dish.extendedIngredients"
-          >Total cost: {{Math.round(dishPrice() * this.numberOfGuests)}}</tr> 
+          <tr>
+           <td>Total cost: </td>
+          <td v-if="dish.extendedIngredients">{{Math.round(dishPrice() * this.numberOfGuests)+ ' SEK'}}</td></tr> 
         </table>
 
         <div class="buttons">
@@ -32,6 +32,7 @@
             <button class="button">Back to search</button>
           </router-link>
           <button class="button" @click="onDidChangeMenu">Add dish to menu</button>
+          <button class="button" @click="removeDishFromMenu">Remove</button>
         </div>
       </div>
     </div>
@@ -82,6 +83,9 @@ export default {
     // our handler for the input's on change event
     onDidChangeMenu() {
       this.model.addDishToMenu(this.dish);
+    },
+    removeDishFromMenu() {
+      return this.model.removeDishFromMenu(this.dish);
     },
     dishPrice(){
       return this.model.getTotalDishPrice(this.dish)

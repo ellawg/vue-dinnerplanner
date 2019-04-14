@@ -40,10 +40,12 @@
                 <td>{{dish.title}}</td>
                 <td
                   v-if="dish.extendedIngredients"
-                >{{Math.round(dishPrice(dish) * numberOfGuests)}}</td>
+                >{{Math.round(dishPrice(dish) * numberOfGuests) + " SEK"}}</td>
+               <td><button class="remove" @click="removeDishFromMenu(dish)">X</button></td>
               </tr>
+              <hr/>
               <tr>Total:
-                <td>{{Math.round(totPrice()* numberOfGuests)}}</td>
+                <td>{{Math.round(totPrice()* numberOfGuests) + " SEK"}}</td>
               </tr>
             </table>
             <button
@@ -87,7 +89,7 @@ export default {
       if (changeDetails === "addDishToMenu") {
         this.menu = this.model.getMenu();
       }
-    },
+    }, 
 
     // our handler for the input's on change event
     onDidChangeNumberOfGuests(e) {
@@ -98,6 +100,9 @@ export default {
     },
     totPrice(){
       return this.model.getTotalMenuPrice();
+    },
+    removeDishFromMenu(dish) {
+      return this.model.removeDishFromMenu(dish);
     }
   }
 };

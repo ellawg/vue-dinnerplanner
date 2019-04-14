@@ -97,6 +97,18 @@ class DinnerModel extends ObservableModel {
     this.notifyObservers("addDishToMenu");
   }
 
+  removeDishFromMenu(dish) {
+    if(dish){
+    const menu = this.getMenu();
+    menu.forEach(function (item) {
+      if (dish.id === item.id) {
+        menu.splice(menu.indexOf(item), 1 );
+      }
+    })
+    this.notifyObservers('addDishToMenu');
+  }
+  }
+
   // API methods
 
   /**
