@@ -19,9 +19,12 @@
             <td>{{dishItem.name}}</td>
             <td>{{dishItem.amount * numberOfGuests + ' SEK'}}</td>
           </tr>
+          <tr>
+           
+          </tr>
           <tr
             v-if="dish.extendedIngredients"
-          >Total cost: {{dish.extendedIngredients.length * this.numberOfGuests}}</tr>
+          >Total cost: {{Math.round(dishPrice() * this.numberOfGuests)}}</tr> 
         </table>
 
         <div class="buttons">
@@ -79,6 +82,9 @@ export default {
     // our handler for the input's on change event
     onDidChangeMenu() {
       this.model.addDishToMenu(this.dish);
+    },
+    dishPrice(){
+      return this.model.getTotalDishPrice(this.dish)
     }
   }
 };

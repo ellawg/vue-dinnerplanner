@@ -40,7 +40,10 @@
                 <td>{{dish.title}}</td>
                 <td
                   v-if="dish.extendedIngredients"
-                >{{dish.extendedIngredients.length * numberOfGuests}}</td>
+                >{{Math.round(dishPrice(dish) * numberOfGuests)}}</td>
+              </tr>
+              <tr>Total:
+                <td>{{Math.round(totPrice()* numberOfGuests)}}</td>
               </tr>
             </table>
             <button
@@ -89,6 +92,12 @@ export default {
     // our handler for the input's on change event
     onDidChangeNumberOfGuests(e) {
       this.model.setNumberOfGuests(+e.target.value);
+    },
+    dishPrice(d){
+      return this.model.getTotalDishPrice(d);
+    },
+    totPrice(){
+      return this.model.getTotalMenuPrice();
     }
   }
 };

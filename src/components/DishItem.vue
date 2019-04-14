@@ -17,12 +17,14 @@ export default {
     };
   },
   mounted(){
+    if (this.dish.image){
     if (this.dish.image.includes('https')){
       this.url = "";
     }
     else{
       this.url = "https://spoonacular.com/recipeImages/";
     }
+  }
   }
 };
 </script>

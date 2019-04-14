@@ -60,6 +60,24 @@ class DinnerModel extends ObservableModel {
     });
     return totalPrice;
   }
+  getAllIngredients() {
+		let allIngredients = [];
+    const fullMenu = this.getMenu();
+		fullMenu.forEach(function (item) {
+			if (item.extendedIngredients !== undefined) {
+				allIngredients = allIngredients.concat(item.extendedIngredients);
+			}
+		})
+		return allIngredients;
+	}
+  getTotalMenuPrice() {
+		let totalPrice = 0.00;
+    const ingredients = this.getAllIngredients();
+		ingredients.forEach(function (item) {
+			totalPrice += item.amount;
+		})
+		return totalPrice;
+	}
 
   addDishToMenu(dish) {
     const menu = this.getMenu();
