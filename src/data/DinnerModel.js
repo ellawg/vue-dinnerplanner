@@ -56,7 +56,7 @@ class DinnerModel extends ObservableModel {
   getTotalDishPrice(dish){
     let totalPrice = 0;
     dish.extendedIngredients.forEach(function(dishItem){
-      totalPrice += dishItem.amount;
+      totalPrice += Math.round(dishItem.amount);
     });
     return totalPrice;
   }
@@ -74,7 +74,7 @@ class DinnerModel extends ObservableModel {
 		let totalPrice = 0.00;
     const ingredients = this.getAllIngredients();
 		ingredients.forEach(function (item) {
-			totalPrice += item.amount;
+			totalPrice += Math.round(item.amount);
 		})
 		return totalPrice;
 	}

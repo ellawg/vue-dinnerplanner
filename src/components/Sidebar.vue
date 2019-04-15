@@ -40,12 +40,12 @@
                 <td>{{dish.title}}</td>
                 <td
                   v-if="dish.extendedIngredients"
-                >{{Math.round(dishPrice(dish) * numberOfGuests) + " SEK"}}</td>
+                >{{(dishPrice(dish) * numberOfGuests) + " SEK"}}</td>
                <td><button class="remove" @click="removeDishFromMenu(dish)">X</button></td>
               </tr>
               <hr/>
               <tr>Total:
-                <td>{{Math.round(totPrice()* numberOfGuests) + " SEK"}}</td>
+                <td>{{(totPrice()* numberOfGuests) + " SEK"}}</td>
               </tr>
             </table>
             <button
