@@ -105,7 +105,7 @@ class DinnerModel extends ObservableModel {
         menu.splice(menu.indexOf(item), 1 );
       }
     })
-    this.notifyObservers('addDishToMenu');
+    this.notifyObservers('removeDishFromMenu');
   }
   }
 

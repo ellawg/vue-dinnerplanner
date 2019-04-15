@@ -86,7 +86,7 @@ export default {
         this.numberOfGuests = this.model.getNumberOfGuests();
         localStorage.setItem("numberOfGuests", this.numberOfGuests);
       }
-      if (changeDetails === "addDishToMenu") {
+      if (changeDetails === "addDishToMenu" || changeDetails === "removeDishFromMenu") {
         this.menu = this.model.getMenu();
       }
     }, 
