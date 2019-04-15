@@ -23,7 +23,8 @@
       this.model.getAllDishes().then(dishes => {
         this.status = "LOADED"
         this.dishes = dishes.results
-      }).catch(() => {
+      }).catch((error) => {
+        alert("Oh nooo something went wrong! :( \n" + error);
         this.status = "ERROR"
       })
       this.model.addObserver(this);
@@ -40,7 +41,8 @@
         this.model.getAllChosenDishes().then(dishes => {
         this.status = "LOADED"
         this.dishes = dishes.results
-      }).catch(() => {
+      }).catch((error) => {
+        alert("Oh nooo something went wrong! :( \n" + error);
         this.status = "ERROR"
       })
         }

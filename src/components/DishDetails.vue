@@ -69,7 +69,8 @@ export default {
         this.status = "LOADED";
         this.dish = dish;
       })
-      .catch(() => {
+      .catch((error)  => {
+        alert("Oh nooo something went wrong! :( \n" + error);
         this.status = "ERROR";
       });
     this.model.addObserver(this);
